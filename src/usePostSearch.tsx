@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 
 export const ACTIONS = {
   SETPOSTS: 'setPosts',
@@ -10,14 +10,13 @@ export const ACTIONS = {
   SETNUM: 'setNum',
 }
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   switch (action.type) {
     case ACTIONS.SETPOSTS:
       return {
         ...state,
         posts: [...new Set([...state.posts, ...action.payload.results])],
       }
-      console.log(state.posts)
     case ACTIONS.SETERROR:
       return {
         ...state,
@@ -43,7 +42,7 @@ function reducer(state, action) {
   }
 }
 
-const usePostSearch = (num, page) => {
+const usePostSearch = (num: Number, page: Number) => {
   const [state, dispatch] = useReducer(reducer, {
     loading: true,
     error: false,

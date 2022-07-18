@@ -12,9 +12,15 @@ import {
   IconButton,
   Typography,
 } from '@mui/material'
+interface Props {
+  len: Number
+  index: Number
+  lastPost: any
+  post: any
+}
 
-const Post = ({ len, index, lastPost, post }) => {
-  if (len == index + 1) {
+const Post = ({ len, index, lastPost, post }: Props) => {
+  if (len === index) {
     return (
       <Card ref={lastPost} sx={{ Width: 345, height: 400 }}>
         <CardHeader

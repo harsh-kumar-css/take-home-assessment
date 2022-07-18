@@ -9,7 +9,7 @@ import { Alert, Snackbar, Grid, Box } from '@mui/material'
 import './load.css'
 import { ACTIONS } from './usePostSearch'
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   switch (action.type) {
     case ACTIONS.SETNUM:
       return {
@@ -34,10 +34,10 @@ const App = () => {
     state.page,
   )
 
-  const observer = useRef()
+  const observer: any = useRef()
 
   const lastPost = useCallback(
-    node => {
+    (node: any) => {
       if (loading) return
       if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver(enteries => {
@@ -53,9 +53,8 @@ const App = () => {
     [loading, hasMore],
   )
 
-  function handleNumberofPost(e) {
+  function handleNumberofPost(e: any) {
     App_dispatch({ type: ACTIONS.SETNUM, payload: { num: e.target.value } })
-    // setPage(1)
     App_dispatch({ type: ACTIONS.SETPAGE, payload: { page: 1 } })
     dispatch({ type: ACTIONS.SET_POSTS_EMPTY })
   }
@@ -74,12 +73,12 @@ const App = () => {
           rowSpacing={1}
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         >
-          {posts.map((post, index) => {
+          {posts.map((post: any, index: number) => {
             return (
               <Grid item xs={12} sm={4}>
                 <Post
                   len={posts.length}
-                  index={index}
+                  index={index + 1}
                   lastPost={lastPost}
                   key={post}
                   post={post}
@@ -89,7 +88,7 @@ const App = () => {
           })}
           {loading && (
             <>
-              <Snackbar open={open} autoHideDuration={6000}>
+              <Snackbar open={true} autoHideDuration={6000}>
                 <Alert
                   variant='filled'
                   severity='info'
@@ -108,7 +107,7 @@ const App = () => {
           )}
         </Grid>
         {error && (
-          <Snackbar open={open} autoHideDuration={6000}>
+          <Snackbar open={true} autoHideDuration={6000}>
             <Alert variant='filled' severity='error' sx={{ width: '100%' }}>
               Please Refresh ...
             </Alert>

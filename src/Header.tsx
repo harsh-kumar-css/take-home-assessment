@@ -51,8 +51,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }))
+interface Props {
+  num: Number
+  page: Number
+  handleNumberofPost: any
+}
 
-const Header = ({ num, page, handleNumberofPost }) => {
+const label: string = 'Outlined'
+
+const Header = ({ num, page, handleNumberofPost }: Props) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='fixed' style={{ backgroundColor: 'rgb(102, 0, 102)' }}>
@@ -81,8 +88,6 @@ const Header = ({ num, page, handleNumberofPost }) => {
                 placeholder='Page Number'
                 inputProps={{ 'aria-label': 'search' }}
                 id='outlined-basic'
-                label='Outlined'
-                variant='outlined'
               />
             </Tooltip>
           </Search>
@@ -94,8 +99,6 @@ const Header = ({ num, page, handleNumberofPost }) => {
                 placeholder='Enter Number of Posts you want on each page'
                 inputProps={{ 'aria-label': 'search' }}
                 id='outlined-basic'
-                label='Outlined'
-                variant='outlined'
               />
             </Tooltip>
           </Search>
