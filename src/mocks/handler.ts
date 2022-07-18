@@ -8,10 +8,12 @@ export const handlers: RestHandler[] = [
     const searchParams = req.url.searchParams
 
     if (!searchParams.has('page')) {
+      console.log('no page variable found')
       return res(ctx.status(400), ctx.json({ error: 'page is required' }))
     }
 
     if (!searchParams.has('num')) {
+      console.log('no num variable found')
       return res(ctx.status(400), ctx.json({ error: 'num is required' }))
     }
 
